@@ -1,6 +1,6 @@
 import React from 'react';
 
-class TodoApp extends React.Component {
+class List extends React.Component {
   constructor(props) {
     super(props);
     this.state = { items: [], text: '' };
@@ -12,7 +12,7 @@ class TodoApp extends React.Component {
     return (
       <div>
         <h3>{this.props.listname}</h3>
-        <TodoList items={this.props.listelems} />
+        <ul>{this.props.listelems.map(item => <li key={item.key}>{item.name}</li>)}</ul>
         <form onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleChange}
@@ -37,14 +37,4 @@ class TodoApp extends React.Component {
   }
 }
 
-const TodoList = (props) => {
-  return (
-    <ul>
-      {
-        props.items.map(item => <li key={item.key}>{item.name}</li>)
-      }
-    </ul>
-  );
-}
-
-export default TodoApp;
+export default List;
