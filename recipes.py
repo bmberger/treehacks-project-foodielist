@@ -17,4 +17,8 @@ def query(queryString):
     r = requests.get("https://api.spoonacular.com/recipes/search", params=payload)
 
     results = json.loads(r.text)
-    return r.text
+    returnString = ""
+    for result in results['results']:
+        returnString += result['title']
+        returnString += '! '
+    return returnString
