@@ -25,7 +25,6 @@ class List extends React.Component {
   }
 
   handleChange(e) {
-    console.log("a")
     this.setState({ text: e.target.value });
   }
 
