@@ -10,8 +10,7 @@ function App() {
     <div className="App">
       <header className="App-header">
 	<TodoApp listname="ingredients!"/>
-	<TodoApp listname="adjectives"/>
-        //insert button here - pass in two lists as props 
+	<TodoApp listname="adjectives"/> 
 	<AwesomeButton 
 		type="primary"
 		>Submit
