@@ -44,7 +44,8 @@ class TodoApp extends React.Component {
       items: state.items.concat(newItem),
       text: ''
     }));
-  }
+    this.props.entryType.push(this.state.text);
+    }
 }
 
 class TodoList extends React.Component {
