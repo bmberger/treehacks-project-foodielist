@@ -8,6 +8,10 @@ app = Flask(__name__)
 def index():
     return "Successfully contacted the API!"
 
+@app.route('/echo/<thing>')
+def secret(thing):
+    return thing
+
 @app.route('/api', methods=['GET'])
 def get_recipes():
     q = request.args.get('query', None)
