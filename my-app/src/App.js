@@ -3,7 +3,6 @@ import List from './List.js';
 import './App.css';
 import {AwesomeButton} from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
-import Fetch from './Fetch.js';
 
 class App extends React.Component {
 	constructor(props) {
@@ -43,7 +42,6 @@ class App extends React.Component {
 				>
 				Submit
 				</AwesomeButton>
-				<Fetch ingr= {this.state.ingredients} />
 				</header>
 			</div>
 		);
