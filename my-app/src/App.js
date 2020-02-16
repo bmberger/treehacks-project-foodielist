@@ -18,9 +18,8 @@ class App extends React.Component {
 			key: Date.now(),
 			name: ingredient
 		};
-		this.state.ingredients.push(new_ingredient);
 		this.setState({
-			ingredients: this.state.ingredients
+			ingredients: [...this.state.ingredients, new_ingredient]
 		});
 	}
 	addAdjective = adjective => {
@@ -28,9 +27,8 @@ class App extends React.Component {
 			key: Date.now(),
 			name: adjective
 		};
-		this.state.adjectives.push(new_adjective);
 		this.setState({
-			adjectives: this.state.adjectives
+			adjectives: [...this.state.adjectives, new_adjective]
 		});
 	}
 	render() { 

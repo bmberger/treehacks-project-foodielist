@@ -15,36 +15,33 @@ class TodoApp extends React.Component {
         <TodoList items={this.props.listelems} />
         <form onSubmit={this.handleSubmit}>
           <input
-            id="new-todo"
             onChange={this.handleChange}
             value={this.state.text}
           />
-          <button>
-            Add
-          </button>
+          <button>Add</button>
         </form>
       </div>
     );
   }
 
   handleChange(e) {
+    console.log("a")
     this.setState({ text: e.target.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    if (!this.state.text.length) {
-      return;
-    }
+    if (!this.state.text.length) return;
     this.props.updater(this.state.text);
-    }
+    this.setState({ text: '' });
+  }
 }
 
 const TodoList = (props) => {
   return (
     <ul>
       {
-        props.items.map(item => <li key={Date.now()}>{item.name}</li>)
+        props.items.map(item => <li key={item.key}>{item.name}</li>)
       }
     </ul>
   );
