@@ -1,6 +1,8 @@
 import requests
 import json
 
+
+
 # Returns an HTML string summarizing the recipe with the given id.
 def summarizeRecipe(idNum, apiKey):
     payload = {'apiKey' : apiKey}
@@ -15,4 +17,4 @@ def query(queryString):
     r = requests.get("https://api.spoonacular.com/recipes/search", params=payload)
 
     results = json.loads(r.text)
-    return results
+    return r.text
