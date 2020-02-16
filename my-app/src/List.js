@@ -12,7 +12,7 @@ class TodoApp extends React.Component {
     return (
       <div>
         <h3>{this.props.listname}</h3>
-        <TodoList items={this.state.items} />
+        <TodoList items={this.props.listelems} />
         <form onSubmit={this.handleSubmit}>
           <input
             id="new-todo"
@@ -36,28 +36,18 @@ class TodoApp extends React.Component {
     if (!this.state.text.length) {
       return;
     }
-    const newItem = {
-      text: this.state.text,
-      id: Date.now()
-    };
-    this.setState(state => ({
-      items: state.items.concat(newItem),
-      text: ''
-    }));
-    this.props.entryType.push(this.state.text);
+    this.props.updater(this.state.text);
     }
 }
 
-class TodoList extends React.Component {
-  render() {
-    return (
-      <ul>
-        {this.props.items.map(item => (
-          <li key={item.id}>{item.text}</li>
-        ))}
-      </ul>
-    );
-  }
+const TodoList = (props) => {
+  return (
+    <ul>
+      {
+        props.items.map(item => <li key={Date.now()}>{item.name}</li>)
+      }
+    </ul>
+  );
 }
 
 export default TodoApp;

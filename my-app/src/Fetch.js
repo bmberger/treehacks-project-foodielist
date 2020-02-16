@@ -28,9 +28,9 @@ class Fetch extends React.Component {
 	}
 
 	componentDidMount() {
-		fetch(API + 'cheese')
-		.then(response => response.json())
-		.then(data => this.setState({ hits: data.hits }));
+		// fetch(API + 'cheese')
+		// .then(response => response.json())
+		// .then(data => this.setState({ hits: data.hits }));
 	}
-	}
+}
 export default Fetch;

@@ -1,34 +1,55 @@
 import React from 'react';
-import logo from './logo.svg';
-import TodoApp from './Input.js';
+import List from './List.js';
 import './App.css';
 import {AwesomeButton} from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 import Fetch from './Fetch.js';
 
-const ingrList = [];
-const adjList = [];
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-	<TodoApp listname="ingredients!" entryType = {ingrList}/>
-	<TodoApp listname="adjectives" entryType = {adjList}/>
-	<AwesomeButton
-        	type="primary"
-	onPress={() => {
-		{console.log(ingrList);
-		 console.log(adjList);}
-	}}  
-	>
-	  Submit
-	</AwesomeButton>
-	<Fetch ingr= {ingrList} />
-
-    </header>
-    </div>
-  );
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			ingredients: [],
+			adjectives: []
+		}
+	}
+	addIngredient = ingredient => {
+		const new_ingredient = {
+			key: Date.now(),
+			name: ingredient
+		};
+		this.state.ingredients.push(new_ingredient);
+		this.setState({
+			ingredients: this.state.ingredients
+		});
+	}
+	addAdjective = adjective => {
+		const new_adjective = {
+			key: Date.now(),
+			name: adjective
+		};
+		this.state.adjectives.push(new_adjective);
+		this.setState({
+			adjectives: this.state.adjectives
+		});
+	}
+	render() { 
+		return (
+			<div className="App">
+				<header className="App-header">
+				<List listname="ingredients" listelems={this.state.ingredients} updater={this.addIngredient}/>
+				<List listname="adjectives" listelems={this.state.adjectives} updater={this.addAdjective}/>
+				<AwesomeButton
+					type="primary"
+					onPress={_ => console.log(this.state.ingredients, this.state.adjectives)}
+				>
+				Submit
+				</AwesomeButton>
+				<Fetch ingr= {this.state.ingredients} />
+				</header>
+			</div>
+		);
+	}
 }
 
 export default App;
