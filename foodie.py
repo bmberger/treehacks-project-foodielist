@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Hello, World!"
+    return "Successfully contacted the API!"
 
 @app.route('/api', methods=['GET'])
 def get_recipes():
